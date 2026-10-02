@@ -3,6 +3,8 @@
 Clawd, 흰 고양이, 검은 고양이가 창 위를 걸어다녀요. macOS와 Windows 버전의 기능이 같아요.
 Windows는 [아래](#windows)를 보세요.
 
+![Clawd, 검은 고양이, 흰 고양이](screenshot.png)
+
 ## 설치 (3분)
 
 1. 이 폴더를 맥북으로 옮기기 (AirDrop, USB 등)
