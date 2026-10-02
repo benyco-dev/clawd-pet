@@ -1,6 +1,7 @@
-# 데스크톱 펫 (macOS)
+# 데스크톱 펫 (macOS · Windows)
 
-Clawd, 흰 고양이, 검은 고양이가 창 위를 걸어다녀요. Windows 버전과 기능이 같아요.
+Clawd, 흰 고양이, 검은 고양이가 창 위를 걸어다녀요. macOS와 Windows 버전의 기능이 같아요.
+Windows는 [아래](#windows)를 보세요.
 
 ## 설치 (3분)
 
@@ -58,3 +59,17 @@ launchctl unload ~/Library/LaunchAgents/com.clawd.pet.plist; rm ~/Library/Launch
 ```
 
 그다음 `~/.claude/settings.json`의 `hooks.Stop`에서 `touch ~/.clawd-pet/done` 항목을 지우세요.
+
+## Windows
+
+`windows/` 폴더를 원하는 곳(예: `문서`)에 두고, 그 폴더에서 PowerShell로 실행하세요. 펫은 그 폴더에서 실행되니 설치 후 폴더를 옮기지 마세요.
+
+```powershell
+powershell -ExecutionPolicy Bypass -File install.ps1
+```
+
+- 특정 펫만: `install.ps1 white black`
+- 로그인할 때 자동 실행(시작프로그램), 바탕화면에 **펫 모두 켜기/끄기** 바로가기가 생겨요
+- Claude Code 완료 훅을 `~/.claude/settings.json`에 추가해요 (원본은 `settings.json.bak`으로 백업)
+- 대사: `clawd-pet-lines.txt`, AI 대화 지시문: `clawd-pet-ai-prompt.txt` (고친 뒤 펫 모두 켜기)
+- 완전히 지우기: 시작프로그램 폴더(`shell:startup`)의 `clawd-pet-*.lnk`, 바탕화면 바로가기 2개, `%LOCALAPPDATA%\clawd-pet`를 지우고 `settings.json`의 `hooks.Stop`에서 `clawd-pet-notify.ps1` 항목을 지우세요
