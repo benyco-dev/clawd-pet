@@ -399,6 +399,8 @@ $timer.Add_Tick({
       $script:rest--
     } elseif ((Get-Random -Maximum 150) -eq 0) {
       $script:rest = Get-Random -Minimum 40 -Maximum 100  # sit 3-8 s
+    } elseif ((Get-Random -Maximum 300) -eq 0) {
+      $script:y -= 1; $script:vy = -10 * $k  # hop now and then (~every 25 s of walking)
     } else {
       $script:t++
       $script:x += $script:dx

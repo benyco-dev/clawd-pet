@@ -308,6 +308,8 @@ final class Pet {
                 rest -= 1
             } else if Int.random(in: 0..<150) == 0 {
                 rest = Int.random(in: 40..<100)  // sit 3-8 s
+            } else if Int.random(in: 0..<300) == 0 {
+                y -= 1; vy = -10  // hop now and then (~every 25 s of walking)
             } else {
                 t += 1
                 x += dx
