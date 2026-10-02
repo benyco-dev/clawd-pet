@@ -423,7 +423,8 @@ final class App: NSObject {
 
     func aiFiles() -> [String] {
         ((try? FileManager.default.contentsOfDirectory(atPath: dir)) ?? [])
-            .filter { $0.hasPrefix("ai-") && $0.hasSuffix(".txt") }.sorted().map { dir + "/" + $0 }
+            .filter { $0.hasPrefix("ai-") && $0.hasSuffix(".txt") && Int($0.dropFirst(3).dropLast(4)) != nil }  // not ai-prompt.txt
+            .sorted().map { dir + "/" + $0 }
     }
 
     func aiBlocks(_ path: String) -> [String] {
@@ -488,7 +489,8 @@ final class App: NSObject {
             // greet once when a time slot starts (or when pets start during it)
             let f = DateFormatter()
             f.dateFormat = "yyyyMMdd"
-            let key = "\(f.string(from: now))-\(slot.from)"
+            let day = slot.from > slot.to && h < slot.to ? now - 86400 : now  // overnight slot started yesterday
+            let key = "\(f.string(from: day))-\(slot.from)"
             if greeted != key {
                 greeted = key
                 try? key.write(toFile: greetPath, atomically: true, encoding: .utf8)
